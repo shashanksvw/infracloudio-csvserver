@@ -9,6 +9,7 @@ docker ps -a
 ansible-playbook ansible-playbook.yml
 
 
+
 # hostory
    1  sudo apt upgrade
     2  sudo apt update
