@@ -12,10 +12,10 @@
     ignore_errors: yes
           
   - name: run container
-    command: docker run -d --name container-shashank -p 9393:9300 -e CSVSERVER_BORDER=Orange infracloudio/csvserver:latest sleep 5000 
+    command: docker run -d --name container-shashank -p 9393:9090 -e CSVSERVER_BORDER=Orange infracloudio/csvserver:latest sleep 5000 
       
   - name: copying file inside container
     command: docker cp ~/infracloud/csvserver/solution/docker/gencsv.sh container-shashank:/csvserver/
-    command: docker cp ~/infracloud/csvserver/solution/docker/inputdata container-shashank:/csvserver/
-    command: docker cp ~/infracloud/csvserver/solution/docker/inputFile container-shashank:/csvserver/
 
+  - name: copying output of shell inside container
+    command: docker cp ~/infracloud/csvserver/solution/docker/inputFile container-shashank:/csvserver/inputdata
