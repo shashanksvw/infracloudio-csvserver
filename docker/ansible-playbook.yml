@@ -1,0 +1,19 @@
+---
+- name: create docker container
+  hosts: localhost
+    
+  tasks:
+  - name: stop old container
+    command: docker stop container-shashank
+    ignore_errors: yes
+
+  - name: remove old container
+    command: docker rm container-shashank
+    ignore_errors: yes
+          
+  - name: run container
+    command: docker run -d --name container-shashank -p 9393:9393 -e CSVSERVER_BORDER=Orange infracloudio/csvserver:latest sleep 5000 
+      
+  - name: copying file inside container
+    command: docker cp ~/infracloud/csvserver/solution/docker/gencsv.sh container-shashank:/csvserver/
+
